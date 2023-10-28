@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Table with Thymeleaf</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/webapp/WEB-INF/css/styles.css">
+</head>
+
+<body>
+<div class="container">
+    <h2>User Table</h2>
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Date of Birth</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.dateofbirth}"></td>
+            <td>
+                <a th:href="@{/edit(id=${user.userId})}" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                </a>
+
+                <a>
+                    <form th:method="DELETE" th:action="@{/delete(id=${user.getUserId()})}" class="btn btn-danger btn-sm btn-group-sm">
+                        <button type="submit" class="btn btn-default custom-btn">
+                            <span class="glyphicon glyphicon-trash text-white"></span>
+                            <span class="text-white">Delete</span>
+                        </button>
+
+
+                    </form>
+                </a>
+
+
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <a href="new" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus"></span> Add User
+    </a>
+
+</div>
+</body>
+</html>
+
+
