@@ -18,7 +18,7 @@ public class User {
     private String surname;
     @Column(name = "age")
     private int age;
-    @Column(name = "dateofbirth")
+    @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private Date dateofbirth;
 

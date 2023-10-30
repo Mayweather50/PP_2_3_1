@@ -3,14 +3,10 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import web.dao.UserDAO;
 import web.model.User;
 import web.service.UserService;
-import web.service.UserServiceImpl;
 
-import javax.validation.Valid;
 import java.util.List;
 
 
@@ -32,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public String edit(@RequestParam(value = "id", required = true) Long id, Model model) {
+    public String editUser(@RequestParam(value = "id", required = true) Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "edit";
     }
